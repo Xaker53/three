@@ -1,0 +1,10 @@
+@import '../SCSS/import-fonts';
+
+.container
+{
+    max-width: 950px;
+    margin: 0 auto;
+}
+@import "../SCSS/promo";
+@import "../SCSS/_header.scss";
+@import "../SCSS/_buttons.scss";
