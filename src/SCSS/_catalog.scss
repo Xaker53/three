@@ -1,0 +1,137 @@
+.catalog
+{
+    padding-bottom:100px ;
+    .title
+    {
+        color: black;
+        text-align: center;
+        font-weight: 400;
+        font-size: 30px;
+        line-height: 45px;
+    }
+    &__tabs
+    {
+        margin-top: 70px;
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        margin-bottom: 0;
+        padding-left: 0;
+    }
+    &__tab
+    {
+        border: 2px solid #D0D0D0;
+        width: 222px;
+        height: 52px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        text-transform: uppercase;
+        color: #6B6B6B;
+        text-align: center;
+        line-height: 48px;
+        transform: skewX(-25deg);
+        margin: 0 5px;
+        &:hover
+        {
+            box-shadow: 3px 3px 20px red;
+            transition: 0.5s all;
+        }
+
+        cursor: pointer;
+        div
+        {
+            transform: skewX(+25deg);
+        }
+        &_active
+        {
+            background: #C70101;
+            color:white;
+            border:none;
+        }
+    }
+    &__content
+    {
+        margin-top: 60px;
+    }
+    &-item
+    {
+        // display: flex;
+        // flex-direction: column;
+        // align-items:center;
+        width: 303px;
+        min-height: 442px;
+        border: 2px solid #e8e8e8;
+        padding: 20px 20px 26px 20px;
+        
+        &__img
+        {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: 200px;
+        }
+
+        &__subtitle
+        {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: 700;
+            font-size: 16px;
+            color: #0D0D0D;
+        }
+        &__descr
+        {
+            margin-top: 16px;
+            font-weight: 300;
+            font-size: 14px;
+            line-height: 22px;
+            color: #0D0D0D;
+            text-align: center;
+        }
+        &__link
+        {
+            display: block;
+            margin-top: 17px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 14px;
+            text-decoration-line: underline;
+            color: #C70101;
+            &:hover
+            {
+                color:red
+            }
+        }
+        hr
+        {
+            background-color: #E8E8E8;
+            margin-top: 19px;
+            margin-bottom: 21px;
+            border-bottom: none;
+        }
+        &__footer
+        {
+            display: flex;
+            justify-content: space-between;
+            align-items:center
+        }
+        &__old-price
+        {
+            font-weight: 300;
+            font-size: 14px;
+            line-height: 14px;
+            color: #555555;
+            text-decoration-line: line-through;
+        }
+        &__price
+        {
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 20px;
+            color: #050505;
+        }
+    }
+}
