@@ -320,9 +320,12 @@
 }
 .catalog__content {
   margin-top: 60px;
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+.catalog__content_active {
+  display: flex;
 }
 .catalog-item {
   overflow: hidden;
