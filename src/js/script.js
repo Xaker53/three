@@ -48,7 +48,7 @@ $(document).ready(function(){
                 clearInterval(inter);
             }
             
-        }, 50);
+        }, 25);
     }
 
     function opasitiOut(block, i = 1){
@@ -61,7 +61,7 @@ $(document).ready(function(){
                 block.style.display = `none`;
             }
             
-        }, 50);
+        }, 25);
     }
     const modal = document.querySelectorAll('[data-modal= consultation]');
     const overlay = document.querySelector(`.overlay`),
@@ -99,19 +99,22 @@ $(document).ready(function(){
             opasitiIn(overlay);
             // overlay.style.display = 'block';
             order.style.display = 'block'
-
-            let info = item.closest(`.catalog-item`).children[0].children[0].children[1].textContent;
+            let test = item.closest(`.catalog-item`);
+            let info = item.closest(`.catalog-item`).querySelector(".catalog-item__subtitle").textContent;
             let modal__descr = document.querySelectorAll(`.modal__descr`)[1].innerHTML = info;
         })
     });
-
     button_submit.forEach(item=>{
         item.addEventListener(`click`, (e)=>{
             e.preventDefault();
-            consultation.style.display = 'none';
-            opasitiIn(overlay);
-            thanks.style.display = 'block';
-            order.style.display = 'none'
+            let children = item.closest(`.feed-form`).children;
+            if (children[0].value.length > 0 && children[1].value.length > 0 && children[2].value.length > 0 ){
+                consultation.style.display = 'none';
+                opasitiIn(overlay);
+                thanks.style.display = 'block';
+                order.style.display = 'none'
+            }
+            
         });
     });
 
