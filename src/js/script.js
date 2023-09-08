@@ -38,23 +38,98 @@ $(document).ready(function(){
     toggleSlide('.catalog-item__back');
 
     //modal;
-
-    // const modal = document.querySelectorAll('[data-modal= consultation]');
-    $('[data-modal= consultation]').on(`click`, ()=>{
-        $(`.overlay, #consultation`).fadeIn();
-    })
-    $('.modal__close').on('click', ()=>{
-        $('.overlay, #consultation, #thanks, #order'). fadeOut('slow');
-    });
-
-    $('.button_mini').on('click',()=>{
-        $(`.overlay, #order`).fadeIn('slow');
-    });
-
-    $('.button_mini').each((i)=>{
-        $(this).on('click', ()=>{
-            $('#order .catalog-item__subtitle').text($('.catalog-item__subtitle').eq(i).text());
+    function opasitiIn (block, i = 0.1){
+        block.style.opacity = `0`;
+        block.style.display = `block`;
+        let inter = setInterval(()=>{
+            block.style.opacity  = `${i}`;
+            i = i+0.1;
+            if (i >= 1){
+                clearInterval(inter);
+            }
             
+        }, 50);
+    }
+
+    function opasitiOut(block, i = 1){
+        let inter = setInterval(()=>{
+            block.style.opacity  = `${i}`;
+            i =  i-0.1;
+            if (i <= 0){
+                clearInterval(inter);
+                block.style.opacity = `0`;
+                block.style.display = `none`;
+            }
+            
+        }, 50);
+    }
+    const modal = document.querySelectorAll('[data-modal= consultation]');
+    const overlay = document.querySelector(`.overlay`),
+    consultation = document.querySelector(`#consultation`),
+    modal__close = document.querySelectorAll(`.modal__close`),
+    thanks = document.querySelector(`#thanks`),
+    order = document.querySelector(`#order`),
+    button_mini = document.querySelectorAll(`.button_mini`),
+    button_submit = document.querySelectorAll(`.button_submit`);
+    modal.forEach(item=>{
+        item.addEventListener(`click`, ()=>{
+            opasitiIn(overlay);
+            // overlay.style.display = 'block';
+            consultation.style.display = 'block';
+            
+            
+            // $(`.overlay, #consultation`).fadeIn(`slow`);
         })
     });
+
+    modal__close.forEach(item=>{
+        item.addEventListener(`click`, ()=>{
+            opasitiOut(overlay);
+            consultation.style.display = 'none';
+            thanks.style.display = 'none';
+            order.style.display = 'none'
+            
+
+        });
+    })
+    
+
+    button_mini.forEach(item=>{
+        item.addEventListener(`click`, ()=>{
+            opasitiIn(overlay);
+            // overlay.style.display = 'block';
+            order.style.display = 'block'
+
+            let info = item.closest(`.catalog-item`).children[0].children[0].children[1].textContent;
+            let modal__descr = document.querySelectorAll(`.modal__descr`)[1].innerHTML = info;
+        })
+    });
+
+    button_submit.forEach(item=>{
+        item.addEventListener(`click`, (e)=>{
+            e.preventDefault();
+            consultation.style.display = 'none';
+            opasitiIn(overlay);
+            thanks.style.display = 'block';
+            order.style.display = 'none'
+        });
+    });
+
+    // $('[data-modal= consultation]').on(`click`, ()=>{
+    //     $(`.overlay, #consultation`).fadeIn();
+    // })
+    // $('.modal__close').on('click', ()=>{
+    //     $('.overlay, #consultation, #thanks, #order'). fadeOut('slow');
+    // });
+
+    // $('.button_mini').on('click',()=>{
+    //     $(`.overlay, #order`).fadeIn('slow');
+    // });
+
+    // $('.button_mini').each((i)=>{
+    //     $(this).on('click', ()=>{
+    //         $('#order .catalog-item__subtitle').text($('.catalog-item__subtitle').eq(i).text());
+            
+    //     })
+    // });
 });
